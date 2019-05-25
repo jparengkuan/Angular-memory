@@ -1,0 +1,10 @@
+<div class="card">
+  <h5 class="card-header text-center">Angular Memory</h5>
+  <div class="card-body">
+    <p class="card-text mb-0">Verlopen tijd {{this.game.verlopenTijd}} seconden</p>
+    <p class="card-text mb-0">Gevonden kaart-paren: {{this.game.gevondenParen}}</p>
+    <p class="card-text text-center">Resterende toontijd: {{this.game.restoonTijd}}s </p>
+    <p><ngb-progressbar value="{{this.game.restoonTijd}}"></ngb-progressbar></p>
+
+  </div>
+</div>

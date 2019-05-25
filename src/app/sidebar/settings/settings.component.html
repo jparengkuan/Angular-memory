@@ -1,0 +1,24 @@
+
+<div class="card">
+  <h5 class="card-header text-center">Instellingen</h5>
+  <div class="card-body">
+    <div ngbDropdown class="d-inline-block">
+      <button class="btn btn-outline-primary" id="bord" ngbDropdownToggle>Afmeting bord</button>
+      <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+        <button ngbDropdownItem (click)="changeSize(2)">2</button>
+        <button ngbDropdownItem (click)="changeSize(4)">4</button>
+        <button ngbDropdownItem (click)="changeSize(6)">6</button>
+      </div>
+  </div>
+    <div ngbDropdown class="d-inline-block">
+      <button class="btn btn-outline-primary mt-2" id="Karakter" ngbDropdownToggle>Karakter</button>
+      <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+        <button ngbDropdownItem (click)="changeChar('#')">#</button>
+        <button ngbDropdownItem (click)="changeChar('@')">@</button>
+        <button ngbDropdownItem (click)="changeChar('*')">*</button>
+        <button ngbDropdownItem (click)="changeChar('N00b')">N00b</button>
+      </div>
+</div>
+</div>
+  <button type="button" (click)="opnieuw()" class="btn btn-primary btn-sm">Nieuw spel</button>
+</div>

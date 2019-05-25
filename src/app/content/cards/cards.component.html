@@ -1,0 +1,5 @@
+<table id="speelveld">
+<tr *ngFor="let rows of this.game.speelVeld.Rows">
+  <td *ngFor="let kaart of rows.kaarten" class="inactive" [id]="kaart" (click)="cardClicked($event)">{{this.game.karakter}}</td>
+</tr>
+</table>
