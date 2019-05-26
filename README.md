@@ -1,4 +1,4 @@
-# Checkout the live version
+# Production
 
 https://jparengkuan.github.io/Angular-memory/
 
