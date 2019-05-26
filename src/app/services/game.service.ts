@@ -19,15 +19,24 @@ export class GameService {
   boardSize: number;
 
   // Alle Ranking variabelen
-  topScores: object;
+  topScores = [];
   gemSpeelTijd: number;
 
   // Kaarten
   eersteKaart: number;
   tweedeKaart: number;
 
+  // Kaarten temp
+  tempEersteKaart;
+  tempTweedeKaart;
+
   // Timers
   speelTijdTimer;
+  countDownTimer;
+
+  //overig
+  gameModus: string;
+
 
 
 
@@ -46,6 +55,21 @@ export class GameService {
   }
 
   createBoard(kaartCount = 0) {
+
+    switch (this.boardSize) {
+
+      case 2:
+        this.gameModus = 'noob';
+        break;
+      case 4:
+        this.gameModus = 'novice';
+        break;
+      case 6:
+        this.gameModus = 'expert';
+        break;
+
+    }
+
 
     var uniekeLetter = this.nextLetter(this.boardSize);
 
@@ -68,6 +92,29 @@ export class GameService {
 
     //TODO Alle logic om een nieuwe board te maken, en variabelen te resetten
     console.log("Nieuwe game")
+
+    // Reset init variabelen
+    this.restoonTijd = 3;
+    this.verlopenTijd = 0;
+    this.gevondenParen = 0;
+    this.kaartenArray = [];
+
+    // Reset speelveld
+    this.speelVeld = {"Rows": []};
+
+    // Reset timers en referenties
+    clearInterval(this.speelTijdTimer);
+    clearInterval(this.countDownTimer);
+
+    this.speelTijdTimer = null;
+    this.countDownTimer = null;
+
+    // Reset referenties naar kaarten
+    this.eersteKaart = null;
+    this.tweedeKaart = null;
+    this.tempEersteKaart = null;
+    this.tempTweedeKaart = null;
+
     this.createBoard();
   }
 

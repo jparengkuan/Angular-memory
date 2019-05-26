@@ -13,8 +13,7 @@ export class CardsComponent implements OnInit {
   ngOnInit() {
   }
 
-  tempEersteKaart;
-  tempTweedeKaart;
+
   countDownTimer;
 
   cardClicked(event) {
@@ -23,7 +22,7 @@ export class CardsComponent implements OnInit {
     if(event.target.className == 'inactive') {
 
       if (this.game.eersteKaart == null) {
-        this.tempEersteKaart = event.target;
+        this.game.tempEersteKaart = event.target;
         event.target.className = 'active'
         this.game.eersteKaart = cardNumber;
 
@@ -33,14 +32,14 @@ export class CardsComponent implements OnInit {
         this.game.startTijd();
         console.log(cardNumber)
       } else if (this.game.eersteKaart != null && this.game.tweedeKaart == null) {
-        this.tempTweedeKaart = event.target;
+        this.game.tempTweedeKaart = event.target;
 
         event.target.className = 'active'
         this.game.tweedeKaart = cardNumber;
         let karakter = this.game.kaartenArray[cardNumber];
         event.target.innerText = karakter;
 
-        this.checkCards(this.tempEersteKaart, this.tempTweedeKaart)
+        this.checkCards(this.game.tempEersteKaart, this.game.tempTweedeKaart)
       }
     }
   }
@@ -72,11 +71,11 @@ export class CardsComponent implements OnInit {
 
   countDownTimerStart()
   {
-    this.countDownTimer = setInterval(()=>{
+    this.game.countDownTimer = setInterval(()=>{
       if (this.game.restoonTijd == 0)
       {
         console.log("stop countDown timer");
-        clearInterval(this.countDownTimer);
+        clearInterval(this.game.countDownTimer);
 
         //Reset de toontijd
         this.game.restoonTijd = 3;
@@ -91,16 +90,16 @@ export class CardsComponent implements OnInit {
 
   deActiveCards()
   {
-    this.tempEersteKaart.innerText = this.game.karakter;
-    this.tempTweedeKaart.innerText = this.game.karakter;
+    this.game.tempEersteKaart.innerText = this.game.karakter;
+    this.game.tempTweedeKaart.innerText = this.game.karakter;
 
-    this.tempEersteKaart.className = 'inactive';
-    this.tempTweedeKaart.className = 'inactive';
+    this.game.tempEersteKaart.className = 'inactive';
+    this.game.tempTweedeKaart.className = 'inactive';
 
     // Verwijder referenties naar kaarten
     this.game.eersteKaart = null;
     this.game.tweedeKaart = null;
-    this.countDownTimer = null;
+    this.game.countDownTimer = null;
   }
 
   checkIfGameOver()
@@ -108,8 +107,59 @@ export class CardsComponent implements OnInit {
     if (this.game.gevondenParen == this.game.kaartenArray.length / 2 )
     {
       clearInterval(this.game.speelTijdTimer);
-      prompt("Enter your name: ");
+      let name = this.game.gameModus + " " + prompt("Enter your name: ");
+      console.log(name)
+
+      let newScore = {
+        name: name,
+        time: this.game.verlopenTijd
+      };
+
+      this.updateScores(newScore);
+      console.log(this.game.topScores)
     }
+  }
+
+  updateScores(newScore) {
+
+
+    // update topscore
+    this.game.topScores.push(newScore);
+
+    // update gemiddelde speeltijd
+    this.updateGemSpeeltijd();
+
+
+    // Als de topscore lijst meerdere entries bevat sorteer dan
+    if (this.game.topScores.length > 1)
+    {
+      this.game.topScores.sort((a, b) => {
+        return a.time - b.time;
+      });
+
+      // Als er meer scores zijn dan 5 verwijder dan het laatste element
+      if (this.game.topScores.length > 5) {
+        this.game.topScores.pop();
+      }
+
+
+    }
+
+  }
+
+
+  updateGemSpeeltijd()
+  {
+    console.log("update");
+    let somTijd = 0;
+    let aantalScores = this.game.topScores.length;
+
+    this.game.topScores.forEach(function(score) {
+      somTijd += score.time;
+    });
+
+    //update tijd en rond af op seconden
+    this.game.gemSpeelTijd = Math.floor(somTijd / aantalScores);
   }
 
 

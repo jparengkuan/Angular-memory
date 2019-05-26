@@ -2,6 +2,7 @@
 <div class="card">
   <h5 class="card-header text-center">Instellingen</h5>
   <div class="card-body">
+    <p>Gamemodus: {{this.game.gameModus}}</p>
     <div ngbDropdown class="d-inline-block">
       <button class="btn btn-outline-primary" id="bord" ngbDropdownToggle>Afmeting bord</button>
       <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
@@ -16,7 +17,6 @@
         <button ngbDropdownItem (click)="changeChar('#')">#</button>
         <button ngbDropdownItem (click)="changeChar('@')">@</button>
         <button ngbDropdownItem (click)="changeChar('*')">*</button>
-        <button ngbDropdownItem (click)="changeChar('N00b')">N00b</button>
       </div>
 </div>
 </div>

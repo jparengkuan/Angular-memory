@@ -7,6 +7,23 @@ table#speelveld td { cursor:pointer; text-align:center; color:white; font-size:l
 @media only screen and (orientation:portrait) {
   table#speelveld { width:70vw; height:70vw; border-spacing:1vw;}
 }
-td.inactive { background-color:red; }
-td.active { background-color:green; }
+td.inactive {
+  background-color:red;
+  -webkit-transform: rotateY(180deg);
+  transform: rotateY(180deg);
+}
+td.active {
+  background-color:green;
+
+}
 td.found{ background-color:purple; cursor:default; }
+
+td {
+  border: 5px solid white;
+  -webkit-border-radius: 50px;
+  -webkit-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+  -webkit-transition: all 600ms;
+  transition: all 600ms;
+}
+

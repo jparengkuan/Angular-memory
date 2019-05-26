@@ -2,12 +2,8 @@
 <div class="card">
   <h5 class="card-header text-center">Top 5</h5>
   <div class="card-body">
-    <ol *ngIf="this.game.topScores">
-      <li>Barrack Obama: 200</li>
-      <li>Barrack Obama: 200</li>
-      <li>Barrack Obama: 200</li>
-      <li>Barrack Obama: 200</li>
-      <li>Barrack Obama: 200</li>
+    <ol>
+      <li *ngFor="let score of this.game.topScores">{{score.name}} : {{score.time}}s</li>
     </ol>
     <p class="card-text mb-0 text-center"><strong>Gemiddelde speeltijd: {{this.game.gemSpeelTijd}}s</strong></p>
   </div>
