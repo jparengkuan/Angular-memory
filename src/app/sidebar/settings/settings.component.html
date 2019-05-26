@@ -3,7 +3,7 @@
   <h5 class="card-header text-center">Instellingen</h5>
   <div class="card-body">
     <p>Gamemodus: {{this.game.gameModus}}</p>
-    <div ngbDropdown class="d-inline-block">
+    <div ngbDropdown>
       <button class="btn btn-outline-primary" id="bord" ngbDropdownToggle>Afmeting bord</button>
       <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
         <button ngbDropdownItem (click)="changeSize(2)">2</button>
@@ -11,7 +11,7 @@
         <button ngbDropdownItem (click)="changeSize(6)">6</button>
       </div>
   </div>
-    <div ngbDropdown class="d-inline-block">
+    <div ngbDropdown>
       <button class="btn btn-outline-primary mt-2" id="Karakter" ngbDropdownToggle>Karakter</button>
       <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
         <button ngbDropdownItem (click)="changeChar('#')">#</button>
