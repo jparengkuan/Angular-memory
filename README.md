@@ -1,3 +1,7 @@
+# Checkout the live version
+
+https://jparengkuan.github.io/Angular-memory/
+
 # AngularMemory
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.3.9.
