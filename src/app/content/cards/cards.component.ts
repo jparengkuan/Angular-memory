@@ -8,7 +8,7 @@ import {GameService} from '../../services/game.service';
 })
 export class CardsComponent implements OnInit {
 
-  constructor(private game: GameService) { }
+  constructor(public game: GameService) { }
 
   ngOnInit() {
   }

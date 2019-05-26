@@ -9,7 +9,7 @@ import {GameService} from '../../services/game.service';
 export class SettingsComponent implements OnInit {
 
 
-  constructor(private game: GameService) {
+  constructor(public game: GameService) {
 
   }
 

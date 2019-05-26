@@ -10,7 +10,7 @@ import {GameService} from '../../services/game.service';
 })
 export class InfoComponent implements OnInit {
 
-  constructor(config: NgbProgressbarConfig, private game: GameService) {
+  constructor(config: NgbProgressbarConfig, public game: GameService) {
     config.max = 3;
     config.striped = true;
     config.animated = true;
